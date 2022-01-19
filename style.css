@@ -3,3 +3,31 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+.section h1 {
+	text-align: center;
+	margin-bottom: 5vh;
+	border: none;
+}
+
+#PlayBox {
+	height: 600px;
+	width: 600px;
+	border: 2px solid black;
+	margin: 0px auto;
+	display: grid;
+	z-index: 5;
+	overflow: hidden;
+	display: grid;
+	columns: 10;
+}
+
+.drawdiv {
+	height: 16px;
+	width: 16px;
+	background-color: none;
+}
+
+/* .drawdiv:hover {
+	background-color: black;
+} */
