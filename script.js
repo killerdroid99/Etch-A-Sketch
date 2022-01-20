@@ -88,7 +88,7 @@ pickr.on("change", (color, instance) => {
 
 pickr.on("change", (color, instance) => {
 	let blueBtn = document.querySelector(".erase");
-	blueBtn.classList.toggle("blueClr");
+	blueBtn.classList.remove("blueClr");
 });
 // color picker tool
 
@@ -124,6 +124,10 @@ greenBtn.addEventListener("click", () => {
 
 let blueBtn = document.querySelector(".erase");
 
-blueBtn.addEventListener("click", () => {
-	blueBtn.classList.toggle("blueClr");
-});
+blueBtn.addEventListener(
+	"click",
+	() => {
+		blueBtn.classList.toggle("blueClr");
+	},
+	true
+);
