@@ -93,14 +93,11 @@ pickr.on("change", (color, instance) => {
 // color picker tool
 
 let eraseCanvas = document.querySelector(".erase");
-let eCount = parseInt(eraseCanvas.getAttribute("eCount"));
-console.log(eCount);
 
 function eraseStroke() {
 	document.querySelectorAll(".box").forEach((el) => {
 		el.addEventListener("mouseenter", () => {
 			el.style.cssText = "background-color: none";
-			eCount++;
 		});
 	});
 }
@@ -113,7 +110,6 @@ clearCanvas.addEventListener("click", () => {
 	document.querySelectorAll(".box").forEach((el) => {
 		el.style.cssText = "background-color: none";
 	});
-	eCount++;
 });
 
 document.getElementById("Enter").addEventListener("click", () => {
