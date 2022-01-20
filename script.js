@@ -21,14 +21,6 @@ gridMode.addEventListener("click", () => {
 	});
 });
 
-// function defaultColor() {
-// 	const boxes = container.querySelector(".box");
-// 	boxes.forEach((el) => {
-// 		el.style.backgroundColor = "black";
-// 	});
-// }
-// defaultColor();
-
 boxMaker(16); //default value
 
 // color picker tool
@@ -70,6 +62,14 @@ const pickr = Pickr.create({
 			input: true,
 		},
 	},
+});
+
+pickr.on("init", (color, instance) => {
+	document.querySelectorAll(".box").forEach((el) => {
+		el.addEventListener("mouseenter", () => {
+			el.style.cssText = `background-color: black`;
+		});
+	});
 });
 
 pickr.on("change", (color, instance) => {
@@ -116,6 +116,8 @@ document.getElementById("Enter").addEventListener("click", () => {
 	container.innerHTML = "";
 	let pixVal = document.querySelector("#box-counter").value;
 	boxMaker(pixVal);
+	let blueBtn = document.querySelector(".grid-mode");
+	blueBtn.classList.remove("greenClr");
 });
 
 let greenBtn = document.querySelector(".grid-mode");
