@@ -93,14 +93,19 @@ pickr.on("change", (color, instance) => {
 // color picker tool
 
 let eraseCanvas = document.querySelector(".erase");
+let eCount = parseInt(eraseCanvas.getAttribute("eCount"));
+console.log(eCount);
 
-eraseCanvas.addEventListener("click", () => {
+function eraseStroke() {
 	document.querySelectorAll(".box").forEach((el) => {
 		el.addEventListener("mouseenter", () => {
 			el.style.cssText = "background-color: none";
+			eCount++;
 		});
 	});
-});
+}
+
+eraseCanvas.addEventListener("click", eraseStroke);
 
 let clearCanvas = document.querySelector(".clear");
 
@@ -108,6 +113,7 @@ clearCanvas.addEventListener("click", () => {
 	document.querySelectorAll(".box").forEach((el) => {
 		el.style.cssText = "background-color: none";
 	});
+	eCount++;
 });
 
 document.getElementById("Enter").addEventListener("click", () => {
@@ -127,7 +133,7 @@ let blueBtn = document.querySelector(".erase");
 blueBtn.addEventListener(
 	"click",
 	() => {
-		blueBtn.classList.toggle("blueClr");
+		blueBtn.classList.add("blueClr");
 	},
 	true
 );

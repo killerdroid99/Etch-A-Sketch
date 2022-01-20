@@ -10,6 +10,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: #dddddd;
 }
 
 #root {
@@ -51,8 +52,9 @@ h1 {
 	width: 100vw;
 	height: 10vh;
 	text-align: center;
-	margin-top: 20px;
+	margin: 20px;
 	font-family: "Aclonica";
+	font-size: 4rem;
 }
 
 .main {
