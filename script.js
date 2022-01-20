@@ -1,43 +1,129 @@
-const container = document.querySelector("#PlayBox");
-const buttons = document.querySelector(".buttons");
+const container = document.querySelector("#root");
 
-let black = document.createElement("button");
-black.style.cssText =
-	"height: 30px; width: 50px; background: black; color: white;";
-black.innerText = "black";
-let red = document.createElement("button");
-red.style.cssText = "height: 30px; width: 50px; background: red; color: white;";
-red.innerText = "red";
-let blue = document.createElement("button");
-blue.style.cssText =
-	"height: 30px; width: 50px; background: blue; color: white;";
-blue.innerText = "blue";
-let green = document.createElement("button");
-green.style.cssText =
-	"height: 30px; width: 50px; background: green; color: white;";
-green.innerText = "green";
-buttons.append(black, red, blue, green);
+// let box = document.querySelectorAll(".box");
 
-// draw.style.cssText =
-// 	"height: 16px;width: 16px;margin: 0px auto;background-color: black;position: relative;";
-// container.appendChild(draw);
-
-// let draw = document.createElement("div");
-// draw.classList.add(".drawdiv");
-
-function boxMaker(col, row) {
-	for (let i = 0; i < col * row; i++) {
+function boxMaker(square) {
+	for (let i = 0; i < square * square; i++) {
 		let draw = document.createElement("div");
-		draw.style.gridTemplateColumns = `repeat(${col}, ifr)`;
-		draw.style.gridTemplateRows = `repeat(${row}, ifr)`;
-		draw.addEventListener(
-			"mouseenter",
-			() => (draw.style.backgroundColor = "black")
-		);
-		container.appendChild(draw).classList.add("drawdiv");
+		// draw.style.border = "1px solid black";
+		container.style.gridTemplateColumns = `repeat(${square}, 1fr)`;
+		container.style.gridTemplateRows = `repeat(${square}, 1fr)`;
+		draw.classList.add("box");
+		draw.classList.add("default");
+		container.appendChild(draw);
 	}
 }
 
-boxMaker(10, 10);
-boxMaker(10, 10);
-// container.addEventListener("click", boxMaker);
+let gridMode = document.querySelector(".grid-mode");
+gridMode.addEventListener("click", () => {
+	document.querySelectorAll(".box").forEach((element) => {
+		element.classList.toggle("border");
+	});
+});
+
+// function defaultColor() {
+// 	const boxes = container.querySelector(".box");
+// 	boxes.forEach((el) => {
+// 		el.style.backgroundColor = "black";
+// 	});
+// }
+// defaultColor();
+
+boxMaker(16); //default value
+
+// color picker tool
+// Source: https://github.com/Simonwep/pickr
+
+const pickr = Pickr.create({
+	el: ".color-picker",
+	theme: "nano", // or 'monolith', or 'nano'
+	default: "#959595",
+	appClass: "cPicker",
+
+	swatches: [
+		"rgba(244, 67, 54, 1)",
+		"rgba(233, 30, 99, 0.95)",
+		"rgba(156, 39, 176, 0.9)",
+		"rgba(103, 58, 183, 0.85)",
+		"rgba(63, 81, 181, 0.8)",
+		"rgba(33, 150, 243, 0.75)",
+		"rgba(3, 169, 244, 0.7)",
+		"rgba(0, 188, 212, 0.7)",
+		"rgba(0, 150, 136, 0.75)",
+		"rgba(76, 175, 80, 0.8)",
+		"rgba(139, 195, 74, 0.85)",
+		"rgba(205, 220, 57, 0.9)",
+		"rgba(255, 235, 59, 0.95)",
+		"rgba(255, 193, 7, 1)",
+	],
+
+	components: {
+		// Main components
+		preview: true,
+		opacity: true,
+		hue: true,
+
+		// Input / output Options
+		interaction: {
+			hex: true,
+			rgba: true,
+			input: true,
+		},
+	},
+});
+
+pickr.on("change", (color, instance) => {
+	const rgbacolor = color.toRGBA().toString();
+	document.querySelectorAll(".box").forEach((el) => {
+		el.addEventListener("mouseenter", () => {
+			el.style.cssText = `background-color: ${rgbacolor}`;
+		});
+	});
+});
+
+pickr.on("change", (color, instance) => {
+	const rgbacolor = color.toRGBA().toString();
+	document.querySelector("h1").style.cssText = `color: ${rgbacolor}`;
+});
+
+pickr.on("change", (color, instance) => {
+	let blueBtn = document.querySelector(".erase");
+	blueBtn.classList.toggle("blueClr");
+});
+// color picker tool
+
+let eraseCanvas = document.querySelector(".erase");
+
+eraseCanvas.addEventListener("click", () => {
+	document.querySelectorAll(".box").forEach((el) => {
+		el.addEventListener("mouseenter", () => {
+			el.style.cssText = "background-color: none";
+		});
+	});
+});
+
+let clearCanvas = document.querySelector(".clear");
+
+clearCanvas.addEventListener("click", () => {
+	document.querySelectorAll(".box").forEach((el) => {
+		el.style.cssText = "background-color: none";
+	});
+});
+
+document.getElementById("Enter").addEventListener("click", () => {
+	container.innerHTML = "";
+	let pixVal = document.querySelector("#box-counter").value;
+	boxMaker(pixVal);
+});
+
+let greenBtn = document.querySelector(".grid-mode");
+
+greenBtn.addEventListener("click", () => {
+	greenBtn.classList.toggle("greenClr");
+});
+
+let blueBtn = document.querySelector(".erase");
+
+blueBtn.addEventListener("click", () => {
+	blueBtn.classList.toggle("blueClr");
+});

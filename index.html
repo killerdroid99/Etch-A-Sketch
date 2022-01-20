@@ -5,19 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch A Sketch</title>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css" />
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js" defer></script>
     <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <div class="section">
-        <h1>ETCH A SKETCH</h1>
-        <div id="PlayBox">
+    <h1>ETCH A SKETCH</h1>
+    <div class="main">
+        <div id="root"></div>
+        <div class="operations">
+            <button class="grid-mode options">Grid mode</button>
+            <button class="erase options">Erase</button>
+            <button class="clear options">Clear</button>
+            <span>Pick a color below</span>
+            <div class="color-picker"></div>
+            <div class="counter">
+                <input type="number" placeholder="Enter pixel size(default:16)" id="box-counter" value=16>
+                <button id="Enter">Enter</button>
+            </div>
         </div>
     </div>
-    <div class="buttons"></div>
 
 </body>
 

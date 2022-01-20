@@ -2,32 +2,85 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: Helvetica, sans-serif;
+	user-select: none;
 }
 
-.section h1 {
-	text-align: center;
-	margin-bottom: 5vh;
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#root {
+	height: 640px;
+	width: 640px;
+	display: grid;
+	overflow: hidden;
+	cursor: crosshair;
+	box-shadow: 0px 0px 15px rgb(100, 100, 100);
 	border: none;
 }
 
-#PlayBox {
-	height: 600px;
-	width: 600px;
-	border: 2px solid black;
-	margin: 0px auto;
-	display: grid;
-	z-index: 5;
-	overflow: hidden;
-	display: grid;
-	columns: 10;
+.border {
+	border: 0.1px solid black;
+	box-shadow: none;
 }
 
-.drawdiv {
-	height: 16px;
-	width: 16px;
-	background-color: none;
+.options {
+	height: 50px;
+	width: 100px;
+	margin: 10px;
+	border: none;
 }
 
-/* .drawdiv:hover {
-	background-color: black;
-} */
+.operations {
+	display: grid;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-top: 2rem;
+	padding: 2rem;
+	background-color: rgb(211, 211, 211);
+	border-radius: 10px;
+	height: 640px;
+	margin-top: -1px;
+	margin-right: 30px;
+}
+
+h1 {
+	width: 100vw;
+	height: 10vh;
+	text-align: center;
+	margin-top: 20px;
+	font-family: "Aclonica";
+}
+
+.main {
+	display: flex;
+	flex-direction: row-reverse;
+	margin-right: 15vw;
+}
+
+#box-counter {
+	width: 200px;
+	height: 35px;
+	border: none;
+}
+
+#Enter {
+	border: none;
+	width: 50px;
+	height: 40px;
+}
+
+.greenClr {
+	background-color: #5afb00;
+}
+
+.blueClr {
+	background-color: #00fbfb;
+}
+
+.clear:hover {
+	background-color: #ff1919;
+}
